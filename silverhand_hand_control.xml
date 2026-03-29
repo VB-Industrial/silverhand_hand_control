@@ -1,0 +1,8 @@
+<library path="silverhand_hand_control">
+  <class
+    name="silverhand_hand_control/SilverhandHandSystem"
+    type="silverhand_hand_control::SilverhandHandSystem"
+    base_class_type="hardware_interface::SystemInterface">
+    <description>Cyphal-backed ros2_control system interface for the Silverhand gripper.</description>
+  </class>
+</library>
