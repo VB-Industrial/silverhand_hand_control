@@ -9,11 +9,13 @@
   <xacro:arg name="use_mock_hardware" default="true"/>
   <xacro:arg name="can_iface" default="can0"/>
   <xacro:arg name="node_id" default="120"/>
+  <xacro:arg name="queue_len" default="1000"/>
 
   <xacro:silverhand_hand_ros2_control
     name="SilverhandHandSystem"
     initial_positions_file="$(arg initial_positions_file)"
     use_mock_hardware="$(arg use_mock_hardware)"
     can_iface="$(arg can_iface)"
-    node_id="$(arg node_id)"/>
+    node_id="$(arg node_id)"
+    queue_len="$(arg queue_len)"/>
 </robot>

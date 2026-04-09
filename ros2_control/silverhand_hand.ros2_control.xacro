@@ -2,7 +2,7 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
   <xacro:macro
     name="silverhand_hand_ros2_control"
-    params="name initial_positions_file use_mock_hardware:=true can_iface:=can0 node_id:=120">
+    params="name initial_positions_file prefix:='' use_mock_hardware:=true can_iface:=can0 node_id:=120 queue_len:=1000">
     <xacro:property
       name="initial_positions"
       value="${xacro.load_yaml(initial_positions_file)['initial_positions']}"/>
@@ -19,10 +19,11 @@
           <plugin>silverhand_hand_control/SilverhandHandSystem</plugin>
           <param name="can_iface">${can_iface}</param>
           <param name="node_id">${node_id}</param>
+          <param name="queue_len">${queue_len}</param>
         </xacro:unless>
       </hardware>
 
-      <joint name="left_finger_joint">
+      <joint name="${prefix}left_finger_joint">
         <command_interface name="position"/>
         <command_interface name="effort"/>
         <state_interface name="position">
@@ -31,7 +32,7 @@
         <state_interface name="velocity"/>
         <state_interface name="effort"/>
       </joint>
-      <joint name="right_finger_joint">
+      <joint name="${prefix}right_finger_joint">
         <command_interface name="position"/>
         <command_interface name="effort"/>
         <state_interface name="position">
