@@ -24,6 +24,7 @@ def generate_launch_description():
     node_id = LaunchConfiguration("node_id")
     queue_len = LaunchConfiguration("queue_len")
     controller_manager_name = "/hand_controller_manager"
+    robot_description_topic = "/hand/robot_description"
 
     description_file = PathJoinSubstitution(
         [FindPackageShare("silverhand_hand_control"), "urdf", "silverhand_hand.urdf.xacro"]
@@ -58,6 +59,7 @@ def generate_launch_description():
         executable="robot_state_publisher",
         output="screen",
         parameters=[robot_description],
+        remappings=[("/robot_description", robot_description_topic)],
     )
 
     ros2_control_node = Node(
@@ -66,7 +68,10 @@ def generate_launch_description():
         name="hand_controller_manager",
         output="screen",
         parameters=[robot_description, controllers_file],
-        remappings=[("/controller_manager/robot_description", "/robot_description")],
+        remappings=[
+            ("/robot_description", robot_description_topic),
+            ("/controller_manager/robot_description", robot_description_topic),
+        ],
     )
 
     joint_state_broadcaster_spawner = Node(

@@ -11,5 +11,5 @@ source "${ROS_WS}/install/setup.bash"
 
 exec ros2 launch silverhand_hand_control silverhand_hand_bringup.launch.py \
   use_mock_hardware:=true \
-  can_iface:="${SILVERHAND_HAND_CAN_IFACE:-can0}" \
-  node_id:="${SILVERHAND_HAND_NODE_ID:-120}"
+  can_iface:="${SILVERHAND_HAND_CAN_IFACE:-vcan1.0}" \
+  node_id:="${SILVERHAND_HAND_NODE_ID:-11}"

@@ -7,8 +7,8 @@
     name="initial_positions_file"
     default="$(find silverhand_hand_control)/config/initial_positions.yaml"/>
   <xacro:arg name="use_mock_hardware" default="true"/>
-  <xacro:arg name="can_iface" default="can0"/>
-  <xacro:arg name="node_id" default="120"/>
+  <xacro:arg name="can_iface" default="vcan1.0"/>
+  <xacro:arg name="node_id" default="11"/>
   <xacro:arg name="queue_len" default="1000"/>
 
   <xacro:silverhand_hand_ros2_control

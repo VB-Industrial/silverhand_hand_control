@@ -14,7 +14,7 @@ ros2 launch silverhand_hand_control silverhand_hand_bringup.launch.py use_mock_h
 Real hardware:
 
 ```bash
-ros2 launch silverhand_hand_control silverhand_hand_bringup.launch.py use_mock_hardware:=false can_iface:=can0 node_id:=120
+ros2 launch silverhand_hand_control silverhand_hand_bringup.launch.py use_mock_hardware:=false can_iface:=vcan1.0 node_id:=11
 ```
 
 ## Helper scripts
@@ -29,8 +29,8 @@ cd /home/r/silver_ws/src/silverhand_hand_control
 
 - `ROS_WS`
 - `ROS_DISTRO`
-- `SILVERHAND_HAND_CAN_IFACE`
-- `SILVERHAND_HAND_NODE_ID`
+- `SILVERHAND_HAND_CAN_IFACE` — по умолчанию `vcan1.0`
+- `SILVERHAND_HAND_NODE_ID` — по умолчанию `11`
 
 ## systemd
 

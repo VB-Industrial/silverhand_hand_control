@@ -172,8 +172,8 @@ CallbackReturn SilverhandHandSystem::on_init(
     return CallbackReturn::ERROR;
   }
 
-  can_iface_ = get_string_param(info_, "can_iface", "can0");
-  node_id_ = get_uint16_param(info_, "node_id", 120);
+  can_iface_ = get_string_param(info_, "can_iface", "vcan1.0");
+  node_id_ = get_uint16_param(info_, "node_id", 11);
   queue_len_ = get_size_t_param(info_, "queue_len", 1000);
 
   const auto joint_count = info_.joints.size();
