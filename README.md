@@ -34,33 +34,28 @@ cd /home/r/silver_ws/src/silverhand_hand_control
 
 ## systemd
 
-User-service template:
+System service template:
 
-- `systemd/user/silverhand-hand-control@.service`
+- `systemd/system/silverhand-hand-control@.service`
 
 Установка:
 
 ```bash
-mkdir -p ~/.config/systemd/user
-cp /home/r/silver_ws/src/silverhand_hand_control/systemd/user/silverhand-hand-control@.service ~/.config/systemd/user/
-systemctl --user daemon-reload
+sudo install -Dm644 /home/r/silver_ws/src/silverhand_hand_control/systemd/system/silverhand-hand-control@.service /etc/systemd/system/silverhand-hand-control@.service
+sudo systemctl daemon-reload
 ```
 
 Запуск:
 
 ```bash
-systemctl --user enable --now silverhand-hand-control@mock.service
-systemctl --user enable --now silverhand-hand-control@real.service
+sudo systemctl enable --now silverhand-hand-control@mock.service
+sudo systemctl enable --now silverhand-hand-control@real.service
 ```
 
-Автозапуск без логина:
-
-```bash
-loginctl enable-linger "$USER"
-```
+Автозапуск без логина не нужен: system service стартует без user session.
 
 Логи:
 
 ```bash
-journalctl --user -u silverhand-hand-control@mock.service -f
+journalctl -u silverhand-hand-control@mock.service -f
 ```
