@@ -1,26 +1,26 @@
 # silverhand_hand_control
 
-Unified ros2_control, hardware plugin, and bringup package for the Silverhand gripper.
-ros_control + hwinterface for silverhand project gripper
+Единый пакет `ros2_control`, аппаратного плагина и bringup для захвата Silverhand.
+`ros_control` + `hwinterface` для захвата проекта SilverHand
 
-## Launch
+## Запуск
 
-Mock hardware:
+Mock-режим:
 
 ```bash
 ros2 launch silverhand_hand_control silverhand_hand_bringup.launch.py use_mock_hardware:=true
 ```
 
-Real hardware:
+Режим реального железа:
 
 ```bash
 ros2 launch silverhand_hand_control silverhand_hand_bringup.launch.py use_mock_hardware:=false can_iface:=vcan1.0 node_id:=11
 ```
 
-## Helper scripts
+## Вспомогательные скрипты
 
 ```bash
-cd /home/r/silver_ws/src/silverhand_hand_control
+cd ~/silver_ws/src/silverhand_hand_control
 ./scripts/start_hand_mock.sh
 ./scripts/start_hand_real.sh
 ```
@@ -34,14 +34,14 @@ cd /home/r/silver_ws/src/silverhand_hand_control
 
 ## systemd
 
-System service template:
+Шаблон systemd-сервиса:
 
 - `systemd/system/silverhand-hand-control@.service`
 
 Установка:
 
 ```bash
-sudo install -Dm644 /home/r/silver_ws/src/silverhand_hand_control/systemd/system/silverhand-hand-control@.service /etc/systemd/system/silverhand-hand-control@.service
+sudo install -Dm644 systemd/system/silverhand-hand-control@.service /etc/systemd/system/silverhand-hand-control@.service
 sudo systemctl daemon-reload
 ```
 
@@ -52,7 +52,7 @@ sudo systemctl enable --now silverhand-hand-control@mock.service
 sudo systemctl enable --now silverhand-hand-control@real.service
 ```
 
-Автозапуск без логина не нужен: system service стартует без user session.
+Автозапуск без логина не нужен: system-сервис стартует без пользовательской сессии.
 
 Логи:
 
